@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package = "com.example.demo";
+
+//package com.example.demo;
+
+service HelloService {
+    rpc GetHello (Name) returns (Hello);
+}
+
+message Name {
+    string value = 1;
+}
+
+message Hello {
+    string message = 1;
+}
