@@ -17,48 +17,28 @@ fun main(args: Array<String>) {
 }
 
 @RestController
-@RequestMapping("/hello")
-class HelloController {
 
-    @GetMapping
+class HelloController {
+    @RequestMapping("/hello")
     fun hello(@RequestParam(required = false, defaultValue = "Koo") name: String): String {
         return "Hello $name!"
     }
-}
-
-// Basic GET request without parameter
-// http://localhost:8080/whatismyname?name=Chris
-@RestController
-@RequestMapping("/whatismyname")
-class NameController {
-    @GetMapping
+    // http://localhost:8080/whatismyname?name=Chris
+    @RequestMapping("/whatismyname")
     fun name(@RequestParam(required = false, defaultValue = "Chris") name: String): String {
         return "Your Name is $name!"
     }
-}
-
-// GET request with parameter required
-// http://localhost:8080/whatismynumber?number=2177789504
-@RestController
-@RequestMapping("/whatismynumber")
-class NumberController {
-    @GetMapping
+    // http://localhost:8080/whatismynumber?number=2177789504
+    @RequestMapping("/whatismynumber")
     fun number(@RequestParam(required = true) number: String): String {
         return "Your Number is $number!"
     }
-}
-
-// GET request with multiple parameters required
-// http://localhost:8080/whatismynumberwithname?name=Chris&number=141233123
-@RestController
-@RequestMapping("/whatismynumberwithname")
-class NameNumberController {
-    @GetMapping
+    // http://localhost:8080/whatismynumberwithname?name=Chris&number=141233123
+    @RequestMapping("/whatismynumberwithname")
     fun number(@RequestParam(required = true) number: String, @RequestParam(required = true) name: String): String {
         return "Hello, $name! Your Number is $number!"
     }
 }
-
 
 @GRpcService
 class GrpcHelloService : ReactorHelloServiceGrpc.HelloServiceImplBase() {
