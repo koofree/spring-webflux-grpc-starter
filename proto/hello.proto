@@ -6,6 +6,9 @@ option java_package = "com.example.demo";
 
 service HelloService {
     rpc GetHello (Name) returns (Hello);
+    rpc WhatIsMyName (NameRequest) returns (Reply);
+    rpc WhatIsMyNumber (NumberRequest) returns (Reply);
+    rpc WhatIsMyNumberWithName (NumberNameRequest) returns (Reply);
 }
 
 message Name {
@@ -14,4 +17,22 @@ message Name {
 
 message Hello {
     string message = 1;
+}
+
+// Additional messages
+message NameRequest {
+    string value = 1;
+}
+
+message Reply {
+    string message = 1;
+}
+
+message NumberRequest {
+    int64 value = 1;
+}
+
+message NumberNameRequest {
+    int64 value = 1;
+    string name = 2;
 }
